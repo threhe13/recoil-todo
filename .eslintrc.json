@@ -1,0 +1,91 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {
+    "React": "readonly"
+  },
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals",
+    "prettier",
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    // @typescript-eslint
+    "@typescript-eslint/strict-boolean-expressions": [
+      2,
+      {
+        "allowString": false,
+        "allowNumber": false
+      }
+    ],
+    // eslint
+    "quotes": "off",
+    "arrow-body-style": ["error", "always"],
+    "no-nested-ternary": 0,
+    "operator-linebreak": ["error", "after"],
+    "object-curly-newline": "off",
+    // eslint-plugin-import
+    "import/prefer-default-export": "off", //Prefer a default export if module exports a single name
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "implicit-arrow-linebreak": "off",
+    // eslint-plugin-react
+    "react/jsx-filename-extension": [ 1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] } ], //The set of allowed extensions is configurable.
+    "react/function-component-definition": "off",
+    "react/react-in-jsx-scope": "off", //Prevent missing React when using JSX
+    "react/prefer-stateless-function": "off", //Enforce stateless components to be written as a pure function
+    "react/prop-types": "off", //Prevent missing props validation in a React component definition
+    "react/require-default-props": "off", //Enforce a defaultProps definition for every prop that is not a required prop.
+    "react/jsx-one-expression-per-line": "off", //Limit to one expression per line in JSX
+    "react/jsx-props-no-spreading": "off", //Prevent JSX prop spreading
+    "react/jsx-boolean-value": "off",
+    // eslint-plugin-react-hooks
+    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    // eslint-plugin-jsx-a11y
+    "jsx-a11y/anchor-is-valid": "off" //Enforce all anchors are valid, navigable elements.
+    // prettier
+  },
+  "settings": {
+    // eslint-plugin-react
+    "react": {
+      "version": "detect"
+    },
+    // eslint-plugin-import
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ]
+      }
+    }
+  },
+  "ignorePatterns": [
+    "src/**/*.test.ts"
+  ]
+}
