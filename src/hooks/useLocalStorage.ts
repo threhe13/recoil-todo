@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 import {
   Dispatch,
   SetStateAction,
@@ -31,7 +32,7 @@ const useLocalStorage = <T>(
   if (!isBrowser) {
     return [initialValue as T, noop, noop];
   }
-  if (!key) {
+  if (key.length === 0) {
     throw new Error("useLocalStorage key may not be falsy");
   }
 
@@ -53,10 +54,10 @@ const useLocalStorage = <T>(
       const localStorageValue = localStorage.getItem(key);
       if (localStorageValue !== null) {
         return deserializer(localStorageValue);
-      } else {
-        initialValue && localStorage.setItem(key, serializer(initialValue));
-        return initialValue;
       }
+
+      initialValue && localStorage.setItem(key, serializer(initialValue));
+      return initialValue;
     } catch {
       // If user is in private mode or has storage restriction
       // localStorage can throw. JSON.parse and JSON.stringify
